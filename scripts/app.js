@@ -35,14 +35,14 @@ requirejs(
 
     putMoviesInHTML(movies);
 
-    $("#searchMovie").click(function(){
+    $("#addToFirebase").click(function(){
+      console.log("clicked");
       var userInput = $("#userInput").val().replace(/ /g, "+");
-
       $.ajax({
         url: "http://www.omdbapi.com/?t=" + userInput + "&r=json",
         method: "GET"
       }).done(function(data){
-        $("#searchResults").html(putMoviesInHTML(data));
+        putMoviesInHTML({'movies': [data]});
       });
       
 
