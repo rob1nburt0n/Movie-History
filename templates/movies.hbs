@@ -1,6 +1,12 @@
+
 {{#each movies}}
-  <div id="title">{{Title}}</div>
-  <div id="year">{{Year}}</div>
-  <div id="actors">{{Actors}}</div>
-  <div id="imdbRating">{{imdbRating}}</div>
+ <div id="{{@key}}">
+  <h1>{{Titles}}</h1>
+  <h1>{{imdbRating}}</h1>
+  <h3>{{Year}}</h3>
+  <h4>{{Actors}}</h4>
+  <button id="delete">Delete</button>
+  <button id="seen">Have Seen</button>
+  <button id="change">Change Rating</button>
+ </div>
 {{/each}}
