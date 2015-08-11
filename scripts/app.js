@@ -24,7 +24,10 @@ requirejs(
 
     myFirebaseRef.child("movies").on("value", function(snapshot) {
 
+      var movies = snapshot.val();
+      console.log("Movies object: ", movies);
 
+      
       
     });
 
