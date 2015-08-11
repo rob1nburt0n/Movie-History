@@ -35,7 +35,7 @@ requirejs(
 
     putMoviesInHTML(movies);
 
-    $("#addToFirebase").click(function(){
+    $("#search").click(function(){
       console.log("clicked");
       var userInput = $("#userInput").val().replace(/ /g, "+");
       $.ajax({
