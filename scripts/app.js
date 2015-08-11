@@ -39,54 +39,50 @@ requirejs(
         });
       };
 
-    putMoviesInHTML(movies);
+      putMoviesInHTML(movies);
 
-    //variable to store ajax call data
-    var movieSearchData;
-    //search function that gets movie info from omdb api
-    $("#search").click(function(){
-      console.log("clicked");
-      var userInput = $("#userInput").val().replace(/ /g, "+");
-      $.ajax({
-        url: "http://www.omdbapi.com/?t=" + userInput + "&r=json",
-        method: "GET"
-      }).done(function(data){
-        movieSearchData = data;
-        putSearchInHTML({'movies': [data]});
-      });      
+      //variable to store ajax call data
+      var movieSearchData;
+      //search function that gets movie info from omdb api
+      $("#search").click(function(){
+        console.log("clicked");
+        var userInput = $("#userInput").val().replace(/ /g, "+");
+        $.ajax({
+          url: "http://www.omdbapi.com/?t=" + userInput + "&r=json",
+          method: "GET"
+        }).done(function(data){
+          movieSearchData = data;
+          putSearchInHTML({'movies': [data]});
+        });      
     
-    });
+      });
 
-    //gets movie info from previous ajax call and sends it to firebase
-    $("body").on('click', "#addMovie", function(){
-      var newMovie = {
-        "Title": movieSearchData.Title,
-        "Year": movieSearchData.Year,
-        "Actors": movieSearchData.Actors,
-        "imdbRating": movieSearchData.imdbRating,
-        "Seen": false
-      };
+      //gets movie info from previous ajax call and sends it to firebase
+      $("body").on('click', "#addMovie", function(){
+        var newMovie = {
+          "Title": movieSearchData.Title,
+          "Year": movieSearchData.Year,
+          "Actors": movieSearchData.Actors,
+          "imdbRating": movieSearchData.imdbRating,
+          "Seen": false
+        };
 
         $.ajax({
         url: "https://movie-history.firebaseio.com/movies.json",
         method: "POST",
         data: JSON.stringify(newMovie)
-      });
+        });
+      }); //add movie function ends
 
-    $("body").on('click', "#delete", function(){
-      var thisMovie = $(this).parent().attr('id')
-      $.ajax({
-      url: "https://movie-history.firebaseio.com/movies/" + thisMovie + ".json",
-      method: "DELETE",
-    });
+      $("body").on('click', "#delete", function(){
+        console.log('delete clicked');
+        var thisMovie = $(this).parent().attr('id');
+        $.ajax({
+        url: "https://movie-history.firebaseio.com/movies/" + thisMovie + ".json",
+        method: "DELETE"
+        });
+      }); //end delete button function
 
-    })
-    });
-
-
-
-
-      
-    });
-  }
-);
+    });//end firebase function
+  } //require js function
+); //end require js module
