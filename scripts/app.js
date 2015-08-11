@@ -19,8 +19,14 @@ requirejs(
   ["jquery", "firebase", "hbs", "bootstrap"], 
   function($, _firebase, Handlebars, bootstrap) {
 
+    //firebase reference
+    var myFirebaseRef = new Firebase("https://movie-history.firebaseio.com/");
+
+    myFirebaseRef.child("movies").on("value", function(snapshot) {
 
 
+      
+    });
 
 
   }
