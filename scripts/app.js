@@ -29,7 +29,7 @@ requirejs(
 
       var putMoviesInHTML = function (data) {
       require(['hbs!../templates/movies'],function(movieTemplate){
-        $("#moviesSeen").html(moviesTemplate(data));
+        $("#moviesSeen").html(movieTemplate(data));
       });
     };
 
