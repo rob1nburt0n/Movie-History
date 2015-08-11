@@ -28,12 +28,31 @@ requirejs(
       console.log("Movies object: ", movies);
 
       var putMoviesInHTML = function (data) {
-      require(['hbs!../templates/movies'],function(movieTemplate){
-        $("#movies").html(movieTemplate(data));
-      });
-    };
+        require(['hbs!../templates/movies'],function(movieTemplate){
+          $("#movies").html(movieTemplate(data));
+        });
+      };
 
     putMoviesInHTML(movies);
+
+    $("#addToFirebase").click(function(){
+      console.log("clicked");
+      var userInput = $("#userInput").val().replace(/ /g, "+");
+      $.ajax({
+        url: "http://www.omdbapi.com/?t=" + userInput + "&r=json",
+        method: "GET"
+      }).done(function(data){
+        putMoviesInHTML({'movies': [data]});
+      });
+      
+
+    });
+
+
+
+
+
+
       
     });
   }
