@@ -22,15 +22,19 @@ requirejs(
     //firebase reference
     var myFirebaseRef = new Firebase("https://movie-history.firebaseio.com/");
 
-    myFirebaseRef.child("movies").on("value", function(snapshot) {
+    myFirebaseRef.on("value", function(snapshot) {
 
       var movies = snapshot.val();
       console.log("Movies object: ", movies);
 
-      
+      var putMoviesInHTML = function (data) {
+      require(['hbs!../templates/movies'],function(movieTemplate){
+        $("#moviesSeen").html(movieTemplate(data));
+      });
+    };
+
+    putMoviesInHTML(movies);
       
     });
-
-
   }
 );
