@@ -1,4 +1,4 @@
-define(["jquery", "populateHTML"], function($,populateHTML){
+define(["jquery", "populateHTML", "dom-access"], function($, populateHTML, D){
   var movieSearchData;
   return {
     getMovieData: function(){
@@ -8,8 +8,12 @@ define(["jquery", "populateHTML"], function($,populateHTML){
         url: "http://www.omdbapi.com/?t=" + userInput + "&r=json",
         method: "GET"
       }).done(function(data){
-        movieSearchData = data;
-        populateHTML.putSearchInHTML({'movies': [data]});
+          movieSearchData = data;
+          if (movieSearchData.Response === "False") {
+          D.moviesToAdd.html("<h3>Sorry.  I Couldn't find that movie in our database.</h3>");
+        }else{
+          populateHTML.putSearchInHTML({'movies': [data]});          
+        }
       });      
     },
     addMovieToFirebase: function(){
