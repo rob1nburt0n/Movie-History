@@ -29,8 +29,11 @@ requirejs(
       populateHTML.putSeenMoviesInHTML(movies);
       populateHTML.putToSeeMoviesInHTML(movies);
 
-      //display search results
-      D.searchButton.click(addMovie.getMovieData);
+      //click to display search results on click or return
+      D.searchButton.click(function(e) {
+        e.preventDefault();
+        addMovie.getMovieData();
+      });
 
       //send search data to firebase
       D.body.on('click', "#addMovie", addMovie.addMovieToFirebase);
