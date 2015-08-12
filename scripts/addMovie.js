@@ -2,7 +2,6 @@ define(["jquery", "populateHTML"], function($,populateHTML){
   var movieSearchData;
   return {
     getMovieData: function(){
-      console.log("clicked");
       var userInput = $("#userInput").val().replace(/ /g, "+");
       $("#userInput").val('');
       $.ajax({
