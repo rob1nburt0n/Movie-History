@@ -17,7 +17,9 @@ body {
       background: rgba(0, 0, 0, 0.2); } }
 
 header {
-  font-family: "Pacifico", serif; }
+  font-family: "Pacifico", serif;
+  color: #DDD;
+  text-shadow: 0 3px #000; }
 
 .active {
   padding: 3px; }
