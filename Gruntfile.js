@@ -13,8 +13,8 @@ module.exports = function(grunt) {
     },
     watch: {
       javascripts: {
-        files: ['./scripts/**/*.js'],
-        tasks: ['jshint']
+        files: ['./scripts/**/*.js', 'styles/*.scss'],
+        tasks: ['jshint','sass']
       }
     }
   });

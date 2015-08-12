@@ -1,9 +1,9 @@
 {{#each movies}}
- <div id="{{@key}}" class="">
+ <div id="{{@key}}">
   <h1>{{Title}}</h1>
   <h1>Rating: {{imdbRating}}</h1>
   <h3>Released: {{Year}}</h3>
   <h4>Actors: {{Actors}}</h4>
-  <button id="addMovie">Add Movie</button>
+  <button class="btn btn-primary" id="addMovie">Add Movie</button>
  </div>
 {{/each}}

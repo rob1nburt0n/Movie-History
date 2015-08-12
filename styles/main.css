@@ -1,4 +1,20 @@
+/* navbar */
+body {
+  background-image: url("http://previews.123rf.com/images/nirots/nirots1209/nirots120900047/15353848-vintage-Popcorn-with-Grunge-Effect-Stock-Vector-cinema.jpg");
+  background-size: cover;
+  color: #000; }
+
+.movieDiv {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2%;
+  background: rgba(0, 0, 0, 0.2);
+  color: #CCC; }
+
 .header--main {
   font-family: "Pacifico", serif; }
+
+.active {
+  padding: 3px; }
 
 /*# sourceMappingURL=main.css.map */

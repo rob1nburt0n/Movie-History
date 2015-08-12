@@ -1,12 +1,14 @@
 {{#each movies}}
 {{#unless Seen}}
- <div id="{{@key}}">
-  <h1>{{Title}}</h1>
-  <h1>Rating: {{imdbRating}}</h1>
-  <h3>Released: {{Year}}</h3>
-  <h4>Actors: {{Actors}}</h4>
-  <button id="delete">Delete</button>
-  <button id="seen">Have Seen</button>
- </div>
+  <div class="row">
+   <div id="{{@key}}" class="col-md-5 col-md-offset-7 movieDiv">
+      <h1>{{Title}}</h1>
+      <h1>Rating: {{imdbRating}}</h1>
+      <h3>Released: {{Year}}</h3>
+      <h4>Actors: {{Actors}}</h4>
+      <button class="btn btn-primary" id="delete">Delete</button>
+      <button class="btn btn-primary" id="seen">Have Seen</button>
+    </div>
+  </div>
  {{/unless}}
 {{/each}}
