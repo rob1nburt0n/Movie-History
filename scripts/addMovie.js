@@ -25,6 +25,9 @@ define(["jquery", "populateHTML"], function($,populateHTML){
       url: "https://movie-history.firebaseio.com/movies.json",
       method: "POST",
       data: JSON.stringify(newMovie)
+      }).done(function(){
+        $("#moviesToAdd").prepend('<h1>Movie Successfully Added!</h1>');
+        $("#addMovie").remove();
       });
     }   
     };
