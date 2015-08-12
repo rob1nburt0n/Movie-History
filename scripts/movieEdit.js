@@ -24,10 +24,14 @@ define(["jquery"], function($){
     submitRating: function(){
       var thisMovie = $(this).parent().parent().attr('id');
       var newRating = $('#newRating').val();
-      $.ajax({
-        url: "https://movie-history.firebaseio.com/movies/" + thisMovie + "/imdbRating.json",
-        method: "PUT",
-        data: newRating
+      if (newRating < 11 && newRating > 0 && typeof newRating === "number") {
+        $.ajax({
+          url: "https://movie-history.firebaseio.com/movies/" + thisMovie + "/imdbRating.json",
+          method: "PUT",
+          data: newRating
+      }else{
+        alert("YOU MUST CONFORM!!!!");
+      }
       });
     }
   };//return
