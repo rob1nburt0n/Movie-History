@@ -1,4 +1,4 @@
-define(["jquery","hbs", "dom-access"], function($, Handlebars, D){
+define(["jquery", "hbs", "dom-access"], function($, Handlebars, D){
   return {
     putSeenMoviesInHTML: function(data) {
         require(['hbs!../templates/moviesSeen'],function(movieTemplate){
