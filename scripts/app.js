@@ -24,28 +24,28 @@ requirejs(
     myFirebaseRef.on("value", function(snapshot) {
       //variable to store firbase data
       var movies = snapshot.val();
-      console.log("Movies object: ", movies);
       
+      //populate html
       populateHTML.putSeenMoviesInHTML(movies);
       populateHTML.putToSeeMoviesInHTML(movies);
 
       //display search results
-      $("#search").click(addMovie.getMovieData);
+      D.searchButton.click(addMovie.getMovieData);
 
       //send search data to firebase
-      $("body").on('click', "#addMovie", addMovie.addMovieToFirebase);
+      D.body.on('click', "#addMovie", addMovie.addMovieToFirebase);
 
       //delete movie
-      $("body").on('click', "#delete", movieEdit.deleteMovie);
+      D.body.on('click', "#delete", movieEdit.deleteMovie);
 
       //seen movie change
-      $("body").on('click', "#seen", movieEdit.seenMovie);
+      D.body.on('click', "#seen", movieEdit.seenMovie);
 
       //open change rating dialog box
-      $("body").on('click', "#change", movieEdit.changeMovie);
+      D.body.on('click', "#change", movieEdit.changeMovie);
 
       //submit new rating
-      $("body").on('click', "#newRatingBtn", movieEdit.submitRating);
+      D.body.on('click', "#newRatingBtn", movieEdit.submitRating);
 
     });//end firebase function
   } //require js function
