@@ -41,6 +41,12 @@ requirejs(
       //seen movie change
       $("body").on('click', "#seen", movieEdit.seenMovie);
 
+      //open change rating dialog box
+      $("body").on('click', "#change", movieEdit.changeMovie);
+
+      //submit new rating
+      $("body").on('click', "#newRatingBtn", movieEdit.submitRating);
+
     });//end firebase function
   } //require js function
 ); //end require js module
