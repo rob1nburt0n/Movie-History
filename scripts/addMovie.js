@@ -1,0 +1,33 @@
+define(["jquery", "populateHTML"], function($,populateHTML){
+  var movieSearchData;
+  return {
+    getMovieData: function(){
+      console.log("clicked");
+      var userInput = $("#userInput").val().replace(/ /g, "+");
+      $("#userInput").val('');
+      $.ajax({
+        url: "http://www.omdbapi.com/?t=" + userInput + "&r=json",
+        method: "GET"
+      }).done(function(data){
+        movieSearchData = data;
+        populateHTML.putSearchInHTML({'movies': [data]});
+      });      
+    },
+    addMovieToFirebase: function(){
+      var newMovie = {
+        "Title": movieSearchData.Title,
+        "Year": movieSearchData.Year,
+        "Actors": movieSearchData.Actors,
+        "imdbRating": movieSearchData.imdbRating,
+        "Seen": false
+      };
+      $.ajax({
+      url: "https://movie-history.firebaseio.com/movies.json",
+      method: "POST",
+      data: JSON.stringify(newMovie)
+      });
+    }   
+    };
+  }
+); 
+

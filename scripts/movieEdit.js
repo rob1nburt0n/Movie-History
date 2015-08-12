@@ -1,16 +1,19 @@
   define(["jquery"], function($){
     return {
       seenMovie: function(){
-        var selector = $(this).parent().attr("id");
         $.ajax({
-         url: "https://movie-history.firebaseio.com/movies/" + selector + ".json",
+         url: "https://movie-history.firebaseio.com/movies/" + $(this).parent().attr("id") + "/Seen.json",
          method: "PUT",
-         data: "selector.Seen = true"
+         data: JSON.stringify("true")
+        }); 
+      },
+      deleteMovie: function(){
+        console.log('delete clicked');
+        var thisMovie = $(this).parent().attr('id');
+        $.ajax({
+        url: "https://movie-history.firebaseio.com/movies/" + thisMovie + ".json",
+        method: "DELETE"
         });
-        
-      };
+      }
     }
   }); 
-
-
-  
