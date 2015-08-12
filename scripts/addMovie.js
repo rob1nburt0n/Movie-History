@@ -22,6 +22,7 @@ define(["jquery", "populateHTML", "dom-access"], function($, populateHTML, D){
         "Year": movieSearchData.Year,
         "Actors": movieSearchData.Actors,
         "imdbRating": movieSearchData.imdbRating,
+        "Poster": movieSearchData.Poster,
         "Seen": false
       };
       $.ajax({
