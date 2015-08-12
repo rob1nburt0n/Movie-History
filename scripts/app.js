@@ -26,8 +26,21 @@ requirejs(
       var movies = snapshot.val();
       console.log("Movies object: ", movies);
 
+      //variable to hold seen movies
+      var moviesSeen = [];
+      var moviesToSee = [];
+      //filter every movie into one of the lists
+      for (key in movies.movies){
+        if(movies.movies[key].Seen){
+          moviesSeen[moviesSeen.length] = movies.movies[key];
+        } else {
+          moviesToSee[moviesToSee.length] = movies.movies[key];
+        }
+      }
+      
       //populate the html with firebase data run through handlebars
-      populateHTML.putSeenMoviesInHTML(movies);
+      populateHTML.putSeenMoviesInHTML({"movies": moviesSeen});
+      populateHTML.putToSeeMoviesInHTML({"movies": moviesToSee});
 
       //display search results
       $("#search").click(addMovie.getMovieData);

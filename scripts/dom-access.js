@@ -1,7 +1,9 @@
 define(["jquery"], function($){
   return {
     body: $("body"),
-    moviesDiv: $("#movies"),
+    moviesSeenDiv: $("#moviesSeen"),
+    moviesToSee: $("#moviesToSee"),
+    moviesToAdd: $("#moviesToAdd"),
     searchButton: $("#search"),
     userInput: $("#userInput")      
     };
