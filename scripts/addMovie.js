@@ -2,7 +2,6 @@ define(["jquery", "populateHTML"], function($,populateHTML){
   var movieSearchData;
   return {
     getMovieData: function(){
-      console.log("clicked");
       var userInput = $("#userInput").val().replace(/ /g, "+");
       $("#userInput").val('');
       $.ajax({
@@ -25,6 +24,9 @@ define(["jquery", "populateHTML"], function($,populateHTML){
       url: "https://movie-history.firebaseio.com/movies.json",
       method: "POST",
       data: JSON.stringify(newMovie)
+      }).done(function(){
+        $("#moviesToAdd").prepend('<h1>Movie Successfully Added!</h1>');
+        $("#addMovie").remove();
       });
     }   
     };

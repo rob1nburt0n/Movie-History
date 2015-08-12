@@ -25,9 +25,9 @@ requirejs(
       //variable to store firbase data
       var movies = snapshot.val();
       console.log("Movies object: ", movies);
-
-      //populate the html with firebase data run through handlebars
+      
       populateHTML.putSeenMoviesInHTML(movies);
+      populateHTML.putToSeeMoviesInHTML(movies);
 
       //display search results
       $("#search").click(addMovie.getMovieData);

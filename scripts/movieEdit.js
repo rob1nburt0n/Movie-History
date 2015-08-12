@@ -8,7 +8,6 @@ define(["jquery"], function($){
       }); 
     },
     deleteMovie: function(){
-      console.log('delete clicked');
       var thisMovie = $(this).parent().attr('id');
       $.ajax({
         url: "https://movie-history.firebaseio.com/movies/" + thisMovie + ".json",
