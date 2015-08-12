@@ -10,15 +10,35 @@ body {
   padding: 2%;
   background: rgba(0, 0, 0, 0.6);
   color: #DDD;
-  text-shadow: 0 3px #000; }
+  text-shadow: 0 3px #000;
+  height: 100%; }
   @media (min-width: 1200px) {
     .movieDiv {
       background: rgba(0, 0, 0, 0.2); } }
 
-.header--main {
+header {
   font-family: "Pacifico", serif; }
 
 .active {
   padding: 3px; }
+
+img {
+  float: right;
+  clear: both; }
+
+.searchResultsDiv {
+  min-height: 500px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 2%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #DDD;
+  text-shadow: 0 3px #000; }
+
+#searchForm {
+  color: #DDD;
+  text-shadow: 0 3px #000; }
+  #searchForm input {
+    color: #000; }
 
 /*# sourceMappingURL=main.css.map */
