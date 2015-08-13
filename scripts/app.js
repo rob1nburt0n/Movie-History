@@ -18,15 +18,21 @@ requirejs(
   ["jquery", "firebase", "hbs", "bootstrap", "populateHTML", "addMovie", "find-movies"], 
   function($, _firebase, Handlebars, bootstrap, populateHTML, addMovie, findMovies) {
     //firebase reference
-    var myFirebaseRef = new Firebase("https://movie-project.firebaseio.com/");
+    var myFirebaseRef = new Firebase("https://movie-project.firebaseio.com/movies");
     //firebase function fires everytime the page load or the data changes
-    myFirebaseRef.on("value", function(snapshot) {
+    myFirebaseRef.orderByChild("title").on("value", function(snapshot) {
       require(['hbs!../templates/movieList'], function(movieTemplate) {
       //variable to store firbase data
         var movies = snapshot.val();
-        
+        console.log(snapshot.val());
         //populate html
         $('#movies').html(movieTemplate(movies));
+        $(".movie-info").filter('[watched="false"]').show();
+        $(".movie-info").filter('[watched="true"]').hide();
+        $('.rating').filter('[watched="true"]').show();
+        $('.watched-button').filter('[watched="true"]').hide();
+        $('.rating').filter('[watched="false"]').hide();
+        $('.watched-button').filter('[watched="false"]').show();
       });
 
     });//end firebase function
@@ -60,6 +66,18 @@ requirejs(
     $(".modal-body").on('click', '.add-button', function(){
       var addFB = $(this).parent().attr('key');
       addMovie.addMovie(addFB);
+    });
+
+    $("#watched").click(function() {
+      $(".movie-info").filter('[watched="true"]').show();
+      $(".movie-info").filter('[watched="false"]').hide();
+      $("#wish").parent().removeClass('active');
+    });
+
+    $("#wish").click(function() {
+      $(".movie-info").filter('[watched="false"]').show();
+      $(".movie-info").filter('[watched="true"]').hide();
+      $("#watched").parent().removeClass('active');
     });
     
   } //require js function

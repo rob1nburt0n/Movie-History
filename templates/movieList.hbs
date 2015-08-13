@@ -1,15 +1,14 @@
-{{#each movies}}
-<div class='col-xs-6 col-sm-3' key="{{@key}}">
+
+{{#each this}}
+<div class='col-xs-6 col-sm-3 movie-info' key="{{@key}}" watched="{{seen-it}}" title="{{title}}">
   <div class="img-wrap">
-  	{{!-- <button type="button" class="btn btn-danger btn-xs" id="deleteButton"> --}}
-    	<span class="close glyphicon glyphicon-trash" id="deleteButton" aria-hidden="true"></span>
-    {{!-- </button> --}}
+    <span class='close glyphicon glyphicon-trash' id="deleteButton" aria-hidden="true"></span>
     <img src='{{image-url}}'>
   </div>
-  <div class="rating" rating="{{rating}}">
+  <div class="rating" rating="{{rating}}" watched="{{seen-it}}">
       <span value="10">☆</span><span value="8">☆</span><span value="6">☆</span><span value="4">☆</span><span value="2">☆</span>
   </div>
-  <button type="button" class="btn btn-success btn-xs" id="okButton">Watched
+  <button type="button" class="btn btn-success btn-xs watched-button" watched="{{seen-it}}">Watched
   </button>
 </div>
 {{/each}}
