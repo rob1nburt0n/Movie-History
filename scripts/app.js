@@ -39,6 +39,15 @@ requirejs(
       findMovies.searchResults();
       $modal.modal('show');
     });
+    $("#search-button").on('click', function(){
+      var movieInput = $("#titleInput").val();
+      if($(".movie-info").attr("title").indexOf(movieInput) !== -1) {
+        $(this).show();
+      }
+        else {
+          $(this).hide();
+        }
+    });
 
     $(".modal-body").on('click', '.add-button', function(){
       var addFB = $(this).parent().attr('key');
