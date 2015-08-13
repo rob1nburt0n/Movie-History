@@ -1,0 +1,14 @@
+.image-wrap {
+  position: relative;
+}
+.image-wrap .close {
+   position: absolute;
+   top: 8px;
+   right: 2px;
+   z-index: 100;
+}
+
+.image-wrap:hover .close {
+  color: white;
+  opacity: 1;
+}
