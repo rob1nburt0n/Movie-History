@@ -11,12 +11,55 @@
   z-index: 100;
   padding: 5px 2px 2px;
   outline: none;
-  border: none; }
+  border: none;
+  color: #000;
+  font-weight: bold; }
 
 .close {
   display: inline-block;
   margin-right: 5%;
   color: black;
   outline: white; }
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  color: #F39C12;
+  display: inline-block; }
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em; }
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute; }
+
+.one > span:nth-child(5):before,
+.one > span:nth-child(5) ~ span:before {
+  content: "\2605";
+  position: absolute; }
+
+.two > span:nth-child(4):before,
+.two > span:nth-child(4) ~ span:before {
+  content: "\2605";
+  position: absolute; }
+
+.three > span:nth-child(3):before,
+.three > span:nth-child(3) ~ span:before {
+  content: "\2605";
+  position: absolute; }
+
+.four > span:nth-child(2):before,
+.four > span:nth-child(2) ~ span:before {
+  content: "\2605";
+  position: absolute; }
+
+.five > span:nth-child(1):before,
+.five > span:nth-child(1) ~ span:before {
+  content: "\2605";
+  position: absolute; }
 
 /*# sourceMappingURL=main.css.map */

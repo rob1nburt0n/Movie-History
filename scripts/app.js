@@ -70,6 +70,14 @@ requirejs(
       $(".movie-info").filter('[watched="true"]').hide();
       $("#watched").parent().removeClass('active');
     });
+
+    //Star Rating Feature
+    $(document).on('click', '.rating span', function() {
+      var value = $(this).attr('value');
+      var starKey = $(this).parent().parent().attr('key');
+      var rating = new Firebase('https://movie-project.firebaseio.com/movies/' + starKey);
+      rating.update({'rating': value});
+    });
     
   } //require js function
 ); //end require js module
