@@ -7,8 +7,13 @@ define(["jquery"], function($){
         $.ajax({
           url: "http://www.omdbapi.com/?s=" + input
         }).done(function(data) {
-          console.log(data);
-          $('.modal-body').html(findTemplate(data));
+          var movieData = {
+            Search: []
+          };
+          for (var i = 0; i < 5; i++) {
+            movieData.Search.push(data.Search[i]);
+          }
+          $('.modal-body').html(findTemplate(movieData));
         });
       });
     }
