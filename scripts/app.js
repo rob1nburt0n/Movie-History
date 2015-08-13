@@ -45,6 +45,13 @@ requirejs(
       findMovies.searchResults();
       $modal.modal('show');
     });
+    $("#search-button").on('click', function(){
+      var movieInput = $("#titleInput").val();
+      $(".movie-info").filter(function(index){
+        return $(this).attr("title").indexOf(movieInput) !== -1;
+      }).show();
+      $(".movie-info").filter('[title!="'+ movieInput + '"]').hide();
+    });
 
     //Delete Button
     $( document ).on( "click", "#deleteButton", function() {
@@ -69,6 +76,14 @@ requirejs(
       $(".movie-info").filter('[watched="false"]').show();
       $(".movie-info").filter('[watched="true"]').hide();
       $("#watched").parent().removeClass('active');
+    });
+
+    //Star Rating Feature
+    $(document).on('click', '.rating span', function() {
+      var value = $(this).attr('value');
+      var starKey = $(this).parent().parent().attr('key');
+      var rating = new Firebase('https://movie-project.firebaseio.com/movies/' + starKey);
+      rating.update({'rating': value});
     });
     
   } //require js function
