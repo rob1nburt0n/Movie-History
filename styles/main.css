@@ -4,14 +4,27 @@ body {
   background-size: cover;
   color: #000; }
 
+#top {
+  margin: 5% 0; }
+
+#addMoviesDiv {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2%;
+  border-radius: 20px; }
+
 .movieDiv {
   border: 1px solid black;
   border-radius: 10px;
   padding: 2%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5);
   color: #DDD;
-  text-shadow: 0 3px #000;
-  height: 100%; }
+  text-shadow: 0 3px #000; }
+
+.movieRow {
+  text-align: center;
+  margin: 0 0 2% 0; }
+  .movieRow:hover {
+    background: rgba(0, 0, 0, 0.8); }
 
 header {
   font-family: "Pacifico", serif;
@@ -23,7 +36,8 @@ header {
 
 img {
   float: right;
-  clear: both; }
+  clear: both;
+  height: 100%; }
 
 .searchResultsDiv {
   min-height: 500px;
@@ -37,8 +51,12 @@ img {
 #searchForm {
   color: #DDD;
   text-shadow: 0 3px #000; }
-  #searchForm input {
-    color: #000; }
+
+input {
+  color: #000; }
+
+#ratingAlert {
+  text-shadow: none; }
 
 #newRatingDiv {
   margin-top: 1em; }

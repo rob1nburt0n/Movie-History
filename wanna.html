@@ -11,8 +11,13 @@
 </head>
 <body>
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6">
+    <div class="row" id="top">
+      <div class="col-lg-6">
+        <header>
+          <h1 class="header--main">A Night at the Movies</h1>
+        </header>
+      </div>
+      <div class="col-lg-6">
         <nav class="navbar navbar-default">
           <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -27,8 +32,8 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li><a href="index.html">Movies I've Seen</a></li>
-                <li class="active"><a href="wanna.html">Movies To See</a></li>
+                <li><a href="index.html">Movies I've Seen <span id="numMoviesSeen" class="badge"></span></a></li>
+                <li class="active"><a href="wanna.html">Movies To See <span id="numMoviesToSee" class="badge"></span></a></li>
                 <li><a href="add.html">Add Movies</a></li>
               </ul>
               <!-- <form class="navbar-form navbar-right" role="search">
@@ -44,9 +49,7 @@
     </div>
   </div>
 
-  <header>
-    <h1 class="header--main">A Night at the Movies</h1>
-  </header>
+  
 
   <div id="moviesToSee" class="container-fluid">
   </div>

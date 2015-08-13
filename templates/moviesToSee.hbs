@@ -1,8 +1,8 @@
 {{#each movies}}
 {{#unless Seen}}
-  <div class="row">
-    <div id="{{@key}}" class="col-lg-12 movieDiv">
-      <img src="{{Poster}}">
+  <div class="row movieRow">
+    <div id="{{@key}}" class="col-xs-12 movieDiv">
+      <img src="{{Poster}}" class="img-responsive">
       <h1>{{Title}}</h1>
       <h1>Rating: {{imdbRating}}</h1>
       <h3>Released: {{Year}}</h3>

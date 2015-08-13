@@ -16,8 +16,8 @@ requirejs.config({
 });
 
 requirejs(
-  ["jquery", "firebase", "hbs", "bootstrap", "dom-access", "populateHTML", "addMovie", "movieEdit"], 
-  function($, _firebase, Handlebars, bootstrap, D, populateHTML, addMovie, movieEdit) {
+  ["jquery", "firebase", "hbs", "bootstrap", "dom-access", "populateHTML", "addMovie", "movieEdit", "badges"], 
+  function($, _firebase, Handlebars, bootstrap, D, populateHTML, addMovie, movieEdit, badges) {
     //firebase reference
     var myFirebaseRef = new Firebase("https://movie-history.firebaseio.com/");
     //firebase function fires everytime the page load or the data changes
@@ -29,11 +29,15 @@ requirejs(
       populateHTML.putSeenMoviesInHTML(movies);
       populateHTML.putToSeeMoviesInHTML(movies);
 
+      badges.populateBadges(movies);
+
       //click to display search results on click or return
       D.searchButton.click(function(e) {
         e.preventDefault();
         addMovie.getMovieData();
       });
+
+
 
       //send search data to firebase
       D.body.on('click', "#addMovie", addMovie.addMovieToFirebase);
