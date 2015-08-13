@@ -33,6 +33,7 @@ define(["jquery", "populateHTML", "dom-access"], function($, populateHTML, D){
         $("#confirmation").html('<div class="alert alert-success" role="alert">Movie Successfully Added!<div>');
         setTimeout(function(){
           $("#confirmation").slideUp().html('');
+          D.moviesToAdd.slideUp('slow');
         }, 2000);
       });
     }   

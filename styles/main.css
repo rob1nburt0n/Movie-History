@@ -52,6 +52,9 @@ img {
   color: #DDD;
   text-shadow: 0 3px #000; }
 
+button {
+  margin: 5% 2%; }
+
 input {
   color: #000; }
 
