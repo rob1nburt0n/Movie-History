@@ -14,7 +14,6 @@ requirejs.config({
     }
   }
 });
-
 requirejs(
   ["jquery", "firebase", "hbs", "bootstrap", "dom-access", "populateHTML", "addMovie", "movieEdit", "badges"], 
   function($, _firebase, Handlebars, bootstrap, D, populateHTML, addMovie, movieEdit, badges) {
@@ -28,29 +27,22 @@ requirejs(
       //populate html
       populateHTML.putSeenMoviesInHTML(movies);
       populateHTML.putToSeeMoviesInHTML(movies);
-
       badges.populateBadges(movies);
 
+      ///////////DOM EVENT FUNCTIONS////////// 
       //click to display search results on click or return
       D.searchButton.click(function(e) {
         e.preventDefault();
         addMovie.getMovieData();
       });
-
-
-
       //send search data to firebase
       D.body.on('click', "#addMovie", addMovie.addMovieToFirebase);
-
       //delete movie
       D.body.on('click', "#delete", movieEdit.deleteMovie);
-
       //seen movie change
       D.body.on('click', "#seen", movieEdit.seenMovie);
-
       //open change rating dialog box
       D.body.on('click', "#change", movieEdit.changeMovie);
-
       //submit new rating
       D.body.on('click', "#newRatingBtn", movieEdit.submitRating);
 

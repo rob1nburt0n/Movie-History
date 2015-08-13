@@ -9,7 +9,8 @@ define(["jquery", "populateHTML", "dom-access"], function($, populateHTML, D){
         method: "GET"
       }).done(function(data){
           movieSearchData = data;
-          if (movieSearchData.Response === "False") {
+          D.moviesToAdd.slideDown("slow");
+          if (data.Response === "False") {
           D.moviesToAdd.html("<h3>Sorry.  I Couldn't find that movie in our database.</h3>");
         }else{
           populateHTML.putSearchInHTML({'movies': [data]});          
