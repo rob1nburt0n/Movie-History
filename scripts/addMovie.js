@@ -1,44 +1,21 @@
-define(["jquery", "populateHTML", "dom-access"], function($, populateHTML, D){
-  var movieSearchData;
+define(['jquery', 'firebase'], function($, _firebase) {
   return {
-    getMovieData: function(){
-      var userInput = $("#userInput").val().replace(/ /g, "+");
-      $("#userInput").val('');
+    addMovie: function(imdbID) {
+      var ref = new Firebase("https://movie-project.firebaseio.com/movies");
       $.ajax({
-        url: "http://www.omdbapi.com/?t=" + userInput + "&r=json",
-        method: "GET"
-      }).done(function(data){
-          movieSearchData = data;
-          D.moviesToAdd.slideDown("slow");
-          if (data.Response === "False") {
-          D.moviesToAdd.html("<h3>Sorry.  I Couldn't find that movie in our database.</h3>");
-        }else{
-          populateHTML.putSearchInHTML({'movies': [data]});          
-        }
-      });      
-    },
-    addMovieToFirebase: function(){
-      var newMovie = {
-        "Title": movieSearchData.Title,
-        "Year": movieSearchData.Year,
-        "Actors": movieSearchData.Actors,
-        "imdbRating": movieSearchData.imdbRating,
-        "Poster": movieSearchData.Poster,
-        "Seen": false
-      };
-      $.ajax({
-      url: "https://movie-history.firebaseio.com/movies.json",
-      method: "POST",
-      data: JSON.stringify(newMovie)
-      }).done(function(){
-        $("#confirmation").html('<div class="alert alert-success" role="alert">Movie Successfully Added!<div>');
-        setTimeout(function(){
-          $("#confirmation").slideUp().html('');
-          D.moviesToAdd.slideUp('slow');
-        }, 2000);
+        url: "http://www.omdbapi.com/?i=" + imdbID
+      }).done(function(data) {
+        ref.push({
+          "title": data.Title,
+          "actors": data.Actors,
+          "year": data.Year,
+          "seen-it": false,
+          "rating": 0,
+          "imdb": data.imdbID,
+          "plot": data.Plot,
+          "image-url": "http://img.omdbapi.com/?i=" + data.imdbID + "&apikey=8513e0a1"
+        });
       });
-    }   
-    };
-  }
-); 
-
+    }
+  };
+});

@@ -15,8 +15,8 @@ requirejs.config({
   }
 });
 requirejs(
-  ["jquery", "firebase", "hbs", "bootstrap", "dom-access", "populateHTML", "addMovie", "movieEdit", "badges"], 
-  function($, _firebase, Handlebars, bootstrap, D, populateHTML, addMovie, movieEdit, badges) {
+  ["jquery", "firebase", "hbs", "bootstrap", "populateHTML", "addMovie", "find-movies"], 
+  function($, _firebase, Handlebars, bootstrap, populateHTML, addMovie, findMovies) {
     //firebase reference
     var myFirebaseRef = new Firebase("https://movie-history.firebaseio.com/");
     //firebase function fires everytime the page load or the data changes
@@ -50,6 +50,16 @@ requirejs(
 
     var $modal = $('.modal').modal({
       show: false
+    });
+
+    $("#find-button").on('click', function(){
+      findMovies.searchResults();
+      $modal.modal('show');
+    });
+
+    $(".modal-body").on('click', '.add-button', function(){
+      var addFB = $(this).parent().attr('key');
+      addMovie.addMovie(addFB);
     });
     
   } //require js function
