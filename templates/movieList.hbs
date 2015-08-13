@@ -1,0 +1,13 @@
+{{#each movies}}
+<div class='col-xs-6 col-sm-3' key="{{@key}}">
+  <div class="image-wrap">
+    <span class='close glyphicon glyphicon-trash'></span>
+    <img src='{{image-url}}'>
+  </div>
+  <div class="rating" rating="{{rating}}">
+      <span value="10">☆</span><span value="8">☆</span><span value="6">☆</span><span value="4">☆</span><span value="2">☆</span>
+  </div>
+  <button type="button" class="btn btn-success btn-xs" id="okButton">Watched
+  </button>
+</div>
+{{/each}}

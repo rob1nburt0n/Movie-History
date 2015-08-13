@@ -18,14 +18,16 @@ requirejs(
   ["jquery", "firebase", "hbs", "bootstrap", "populateHTML", "addMovie", "find-movies"], 
   function($, _firebase, Handlebars, bootstrap, populateHTML, addMovie, findMovies) {
     //firebase reference
-    var myFirebaseRef = new Firebase("https://movie-history.firebaseio.com/");
+    var myFirebaseRef = new Firebase("https://movie-project.firebaseio.com/");
     //firebase function fires everytime the page load or the data changes
     myFirebaseRef.on("value", function(snapshot) {
+      require(['hbs!../templates/movieList'], function(movieTemplate) {
       //variable to store firbase data
-      var movies = snapshot.val();
-      
-      //populate html
-      
+        var movies = snapshot.val();
+        
+        //populate html
+        $('#movies').html(movieTemplate(movies));
+      });
 
     });//end firebase function
 
