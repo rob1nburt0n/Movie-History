@@ -47,12 +47,10 @@ requirejs(
     });
     $("#search-button").on('click', function(){
       var movieInput = $("#titleInput").val();
-      if($(".movie-info").attr("title").indexOf(movieInput) !== -1) {
-        $(this).show();
-      }
-        else {
-          $(this).hide();
-        }
+      $(".movie-info").filter(function(index){
+        return $(this).attr("title").indexOf(movieInput) !== -1;
+      }).show();
+      $(".movie-info").filter('[title!="'+ movieInput + '"]').hide();
     });
 
     //Delete Button
