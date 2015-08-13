@@ -1,7 +1,9 @@
 {{#each movies}}
 <div class='col-xs-6 col-sm-3' key="{{@key}}">
-  <div class="image-wrap">
-    <span class='close glyphicon glyphicon-trash'></span>
+  <div class="img-wrap">
+  	{{!-- <button type="button" class="btn btn-danger btn-xs" id="deleteButton"> --}}
+    	<span class="close glyphicon glyphicon-trash" id="deleteButton" aria-hidden="true"></span>
+    {{!-- </button> --}}
     <img src='{{image-url}}'>
   </div>
   <div class="rating" rating="{{rating}}">

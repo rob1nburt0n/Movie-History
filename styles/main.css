@@ -1,14 +1,22 @@
-.image-wrap {
-  position: relative; }
+.img-wrap {
+  position: relative;
+  display: inline-block;
+  font-size: 0; }
 
-.image-wrap .close {
+.img-wrap .close {
+  padding-right: 50%;
   position: absolute;
-  top: 8px;
+  top: 2px;
   right: 2px;
-  z-index: 100; }
+  z-index: 100;
+  padding: 5px 2px 2px;
+  outline: none;
+  border: none; }
 
-.image-wrap:hover .close {
-  color: white;
-  opacity: 1; }
+.close {
+  display: inline-block;
+  margin-right: 5%;
+  color: black;
+  outline: white; }
 
 /*# sourceMappingURL=main.css.map */
