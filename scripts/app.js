@@ -46,6 +46,14 @@ requirejs(
       $modal.modal('show');
     });
 
+    //Delete Button
+    $( document ).on( "click", "#deleteButton", function() {
+      var titleKey = $(this).parent().parent().attr("key");
+      console.log("titleKey", titleKey);
+      var fb = new Firebase('https://movie-project.firebaseio.com/movies/' + titleKey);
+      fb.remove();
+    });
+
     $(".modal-body").on('click', '.add-button', function(){
       var addFB = $(this).parent().attr('key');
       addMovie.addMovie(addFB);
