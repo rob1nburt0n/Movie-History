@@ -30,8 +30,10 @@ define(["jquery", "populateHTML", "dom-access"], function($, populateHTML, D){
       method: "POST",
       data: JSON.stringify(newMovie)
       }).done(function(){
-        $("#moviesToAdd").prepend('<h1>Movie Successfully Added!</h1>');
-        $("#addMovie").remove();
+        $("#confirmation").html('<div class="alert alert-success" role="alert">Movie Successfully Added!<div>');
+        setTimeout(function(){
+          $("#confirmation").slideUp().html('');
+        }, 2000);
       });
     }   
     };
