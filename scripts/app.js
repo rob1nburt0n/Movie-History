@@ -47,5 +47,10 @@ requirejs(
       D.body.on('click', "#newRatingBtn", movieEdit.submitRating);
 
     });//end firebase function
+
+    var $modal = $('.modal').modal({
+      show: false
+    });
+    
   } //require js function
 ); //end require js module
