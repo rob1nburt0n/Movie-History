@@ -29,7 +29,6 @@ requirejs(
         //console.log(snapshot.val());
         //populate html
         if ( $('#wish').parent().hasClass('current') ) {
-          console.log('IS this working');
           $('#movies').html(movieTemplate(sortedMovies));
           $(".movie-info").filter('[watched="false"]').show();
           $(".movie-info").filter('[watched="true"]').hide();
@@ -59,16 +58,15 @@ requirejs(
       });
     });
 
-    var $modal = $('.modal').modal({
-      show: false
-    });
-
+    // var $modal = $('.modal').modal({
+    //   show: false
+    // });
 
     //Find Button
-    $("#find-button").on('click', function(){
-      findMovies.searchResults();
-      $modal.modal('show');
-    });
+    // $("#find-button").on('click', function(){
+    //   findMovies.searchResults();
+    //   $modal.modal('show');
+    // });
 
 
     //Search Button
@@ -77,6 +75,9 @@ requirejs(
       $(".movie-info").filter('[title*="'+ movieInput + '"]').show();
       $(".movie-info").not('[title*="'+ movieInput + '"]').hide();
       $("#titleInput").val("");
+      findMovies.searchResults();
+      $('#display-search').html();
+      //$modal.modal('show');
     });
 
     //Delete Button
@@ -89,7 +90,12 @@ requirejs(
 
 
     //Modal
-    $(".modal-body").on('click', '.add-button', function(){
+    // $(".modal-body").on('click', '.add-button', function(){
+    //   var addFB = $(this).parent().attr('key');
+    //   addMovie.addMovie(addFB);
+    // });
+
+    $('#display-search').on('click', '#search-button', function(){
       var addFB = $(this).parent().attr('key');
       addMovie.addMovie(addFB);
     });
