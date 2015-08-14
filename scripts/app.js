@@ -21,7 +21,7 @@ requirejs(
     //firebase reference
     var myFirebaseRef = new Firebase("https://movie-project.firebaseio.com/movies");
     //firebase function fires everytime the page load or the data changes
-    myFirebaseRef.orderByChild("title").on("value", function(snapshot) {
+    myFirebaseRef.orderByChild("title").once("value", function(snapshot) {
       require(['hbs!../templates/movieList'], function(movieTemplate) {
       //variable to store firbase data
         var movies = snapshot.val();
@@ -124,7 +124,6 @@ requirejs(
       $("#wish").parent().removeClass('current');
       $('#watched').parent().addClass('current');
     });
-
 
     //Star Rating
     $(document).on('click', '.rating span', function() {
