@@ -21,6 +21,7 @@ requirejs(
     //firebase reference
     var myFirebaseRef = new Firebase("https://movie-project.firebaseio.com/movies");
     //firebase function fires everytime the page load or the data changes
+
     myFirebaseRef.once("value", function(snapshot) {
       require(['hbs!../templates/movieList'], function(movieTemplate) {
       //variable to store firbase data
