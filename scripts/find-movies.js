@@ -14,6 +14,7 @@ define(["jquery"], function($){
             movieData.Search.push(data.Search[i]);
           }
           $('.modal-body').html(findTemplate(movieData));
+          $("#titleInput").val("");
         });
       });
     }
