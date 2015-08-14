@@ -46,11 +46,9 @@ requirejs(
       $modal.modal('show');
     });
     $("#search-button").on('click', function(){
-      var movieInput = $("#titleInput").val();
-      $(".movie-info").filter(function(index){
-        return $(this).attr("title").indexOf(movieInput) !== -1;
-      }).show();
-      $(".movie-info").filter('[title!="'+ movieInput + '"]').hide();
+      var movieInput = $("#titleInput").val().toLowerCase();
+      $(".movie-info").filter('[title*="'+ movieInput + '"]').show();
+      $(".movie-info").not('[title*="'+ movieInput + '"]').hide();
     });
 
     //Delete Button
