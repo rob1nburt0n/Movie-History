@@ -10,11 +10,11 @@ define(["jquery"], function($){
           var movieData = {
             Search: []
           };
-          // for (var i = 0; i < 5; i++) {
-          //   movieData.Search.push(data.Search[i]);
-          // }
-          $('#display-search').html(findTemplate(movieData));
-          $("#titleInput").val("");
+          for (var i = 0; i < 5; i++) {
+            movieData.Search.push(data.Search[i]);
+          }
+          $('#movies').append(findTemplate(movieData));
+          //$("#titleInput").val("");
         });
       });
     }

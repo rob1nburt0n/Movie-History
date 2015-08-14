@@ -1,6 +1,12 @@
 .movie-info {
   padding-bottom: 20px; }
 
+#buttonGroups {
+  display: none; }
+
+#movies {
+  clear: both; }
+
 .img-wrap {
   position: relative;
   display: inline-block;

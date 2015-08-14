@@ -1,6 +1,21 @@
-{{#each Search}}
+{{!-- {{#each Search}}
 	<div class="find-results" key={{imdbID}}>
 		<img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=8513e0a1">
-		  <button type="button" class="btn btn-default add-button" {{!-- data-dismiss="modal" --}}>Add</button>
+		  <button type="button" class="btn btn-default add-button" data-dismiss="modal">Add</button>
 	<div>
+{{/each}} --}}
+
+{{#each Search}}
+
+	<div class='col-xs-6 col-sm-3 movie-info search-results' key="{{imdbID}}" title="{{Title}}">
+
+	  <div class="img-wrap">
+	    <span class='close glyphicon glyphicon-trash' id="deleteButton" aria-hidden="true"></span>
+	    <img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=8513e0a1">
+	  </div><br>
+
+	  <button type="button" class="btn btn-success btn-xs watched-button addButton">Add</button>
+
+	</div>
+
 {{/each}}
