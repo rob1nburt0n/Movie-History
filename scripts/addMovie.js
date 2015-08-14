@@ -5,7 +5,7 @@ define(['jquery', 'firebase'], function($, _firebase) {
       $.ajax({
         url: "http://www.omdbapi.com/?i=" + imdbID
       }).done(function(data) {
-        ref.push({
+        ref.child(data.Title.toLowerCase()).set({
           "title": data.Title.toLowerCase(),
           "actors": data.Actors,
           "year": data.Year,
