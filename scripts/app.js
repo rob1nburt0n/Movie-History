@@ -21,7 +21,7 @@ requirejs(
     //firebase reference
     var myFirebaseRef = new Firebase("https://movie-project.firebaseio.com/movies");
     //firebase function fires everytime the page load or the data changes
-    myFirebaseRef.orderByChild("title").once("value", function(snapshot) {
+    myFirebaseRef.once("value", function(snapshot) {
       require(['hbs!../templates/movieList'], function(movieTemplate) {
       //variable to store firbase data
         var movies = snapshot.val();
@@ -29,7 +29,6 @@ requirejs(
         //console.log(snapshot.val());
         //populate html
         if ( $('#wish').parent().hasClass('current') ) {
-          console.log('IS this working');
           $('#movies').html(movieTemplate(sortedMovies));
           $(".movie-info").filter('[watched="false"]').show();
           $(".movie-info").filter('[watched="true"]').hide();
@@ -59,38 +58,66 @@ requirejs(
       });
     });
 
-    var $modal = $('.modal').modal({
-      show: false
-    });
-
+    // var $modal = $('.modal').modal({
+    //   show: false
+    // });
 
     //Find Button
-    $("#find-button").on('click', function(){
-      findMovies.searchResults();
-      $modal.modal('show');
-      $("#titleInput").val("");
-    });
+    // $("#find-button").on('click', function(){
+    //   findMovies.searchResults();
+    //   $modal.modal('show');
+    // });
 
 
     //Search Button
     $("#search-button").on('click', function(){
+      require(['hbs!../templates/find'], function(findTemplate) {
+        var movieInput = $("#titleInput").val().toLowerCase();
+        $(".movie-info").filter('[title*="'+ movieInput + '"]').show();
+        $(".movie-info").not('[title*="'+ movieInput + '"]').hide();
+        findMovies.searchResults();
+        $("#buttonGroups").css('display', 'block');
+      });
+    });
+
+    //Radio Watched Button
+    $('#radio-watched').on('click', function(){
       var movieInput = $("#titleInput").val().toLowerCase();
-      $(".movie-info").filter('[title*="'+ movieInput + '"]').show();
+      $(".movie-info").filter('[watched="false"]').hide();
+      $(".movie-info").filter('[watched="true"]').show();
+      $(".search-results").hide();
       $(".movie-info").not('[title*="'+ movieInput + '"]').hide();
-      $("#titleInput").val("");
+    });
+
+    //Radio Wish Button
+    $('#radio-wish').on('click', function(){
+      var movieInput = $("#titleInput").val().toLowerCase();
+      $(".movie-info").filter('[watched="true"]').hide();
+      $(".movie-info").filter('[watched="false"]').show();
+      $(".search-results").hide();
+      $(".movie-info").not('[title*="'+ movieInput + '"]').hide();
+    });
+
+    //Radio Add Button
+    $('#radio-add').on('click', function(){
+      var movieInput = $("#titleInput").val().toLowerCase();
+      $(".movie-info").filter('[watched="false"]').hide();
+      $(".movie-info").filter('[watched="true"]').hide();
+      $(".search-results").show();
     });
 
     //Delete Button
     $( document ).on( "click", "#deleteButton", function() {
       var titleKey = $(this).parent().parent().attr("key");
-      //console.log("titleKey", titleKey);
+      console.log("titleKey", titleKey);
       var fb = new Firebase('https://movie-project.firebaseio.com/movies/' + titleKey);
       fb.remove();
+      populateHTML.displayMovies();
     });
 
 
-    //Modal
-    $(".modal-body").on('click', '.add-button', function(){
+    //Add Button
+    $("#movies").on('click', '.addButton', function(){
       var addFB = $(this).parent().attr('key');
       addMovie.addMovie(addFB);
     });
@@ -101,6 +128,9 @@ requirejs(
       $(".movie-info").filter('[watched="true"]').hide();
       $("#watched").parent().removeClass('current');
       $('#wish').parent().addClass('current');
+      $("#buttonGroups").hide();
+      $(".search-results").hide();
+      populateHTML.displayMovies();
     });
 
 
@@ -113,6 +143,7 @@ requirejs(
       } else {
         seenIt.update({'seen-it': false});
       }
+      populateHTML.displayMovies();
     });
 
 
@@ -123,6 +154,9 @@ requirejs(
       $(".movie-info").filter('[watched="false"]').hide();
       $("#wish").parent().removeClass('current');
       $('#watched').parent().addClass('current');
+      $("#buttonGroups").hide();
+      $(".search-results").hide();
+      populateHTML.displayMovies();
     });
 
     //Star Rating
@@ -131,6 +165,7 @@ requirejs(
       var starKey = $(this).parent().parent().attr('key');
       var rating = new Firebase('https://movie-project.firebaseio.com/movies/' + starKey);
       rating.update({'rating': value});
+      populateHTML.displayMovies();
     });
     
 });

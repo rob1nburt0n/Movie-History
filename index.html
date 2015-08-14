@@ -39,7 +39,7 @@
         </div>
 
         <button class="btn btn-default" id ="search-button">Search</button>
-        <button class="btn btn-default" id="find-button">Find</button>
+        <!-- <button class="btn btn-default" id="find-button">Find</button> -->
       </div>
 
       </ul>
@@ -47,11 +47,16 @@
   </div><!-- /.container-fluid -->
   </nav>
 
+<div class="btn-group" id="buttonGroups" role="group" aria-label="...">
+  <button type="button" class="btn btn-default" id="radio-watched">Watched</button>
+  <button type="button" class="btn btn-default" id="radio-wish">Wish List</button>
+  <button type="button" class="btn btn-default" id="radio-add">Add</button>
+</div>
+
   <div id="movies" class="container-fluid">
     
 	</div>
-
-<div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<!-- <div class="modal fade bs-example-modal-md" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog modal-md">
     <div id="movie-modal" class="modal-content">
       <div class="modal-header">
@@ -63,8 +68,7 @@
         </div>
     </div>
   </div>
-</div>
-
+</div> -->
     <script data-main="scripts/app" 
           src="bower_components/requirejs/require.js"></script>
 </body>
