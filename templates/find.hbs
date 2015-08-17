@@ -3,8 +3,7 @@
 	<div class='col-xs-6 col-sm-3 movie-info search-results' key="{{imdbID}}" title="{{Title}}">
 
 	  <div class="img-wrap">
-	    <span class='close glyphicon glyphicon-trash' id="deleteButton" aria-hidden="true"></span>
-	    <img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=8513e0a1" alt="{{Title}}" onError='$(this).replaceWith("<h2>{{Title}}</h2>"); this.parent().addClass("noImage");'>
+	    <img src="http://img.omdbapi.com/?i={{imdbID}}&apikey=8513e0a1" alt="{{Title}}" onError='$(this).replaceWith("<h2>{{Title}}</h2>");'>
 	  </div><br>
 
 	  <button type="button" class="btn btn-info btn-xs addButton">Add</button>

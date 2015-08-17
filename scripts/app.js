@@ -120,6 +120,7 @@ requirejs(
       $("#buttonGroups").hide();
       $(".search-results").hide();
       populateHTML.displayMovies();
+      $('#titleInput').val("");
     });
 
     //Star Rating
