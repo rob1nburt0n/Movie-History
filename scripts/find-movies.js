@@ -11,7 +11,11 @@ define(["jquery"], function($){
             Search: []
           };
           for (var i = 0; i < 5; i++) {
-            movieData.Search.push(data.Search[i]);
+            var matchedMovies = $('.movie-info').filter('[title="'+data.Search[i].Title.toLowerCase()+'"]');
+            console.log(matchedMovies);
+            if (matchedMovies.length === 0) {
+              movieData.Search.push(data.Search[i]);
+            }
           }
           $('#movies').append(findTemplate(movieData));
           //$("#titleInput").val("");
