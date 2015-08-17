@@ -33,6 +33,7 @@ requirejs(
     //Search Button
     $("#search-button").on('click', function(){
       require(['hbs!../templates/find'], function(findTemplate) {
+        $('.search-results').remove();
         var movieInput = $("#titleInput").val().toLowerCase();
         $(".movie-info").filter('[title*="'+ movieInput + '"]').show();
         $(".movie-info").not('[title*="'+ movieInput + '"]').hide();
@@ -61,7 +62,7 @@ requirejs(
 
     //Radio Add Button
     $('#radio-add').on('click', function(){
-      var movieInput = $("#titleInput").val().toLowerCase();
+      var movieInput = $("#titleInput").val();
       $(".movie-info").filter('[watched="false"]').hide();
       $(".movie-info").filter('[watched="true"]').hide();
       $(".search-results").show();
