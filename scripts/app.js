@@ -121,6 +121,7 @@ requirejs(
     $("#movies").on('click', '.addButton', function(){
       var addFB = $(this).parent().attr('key');
       addMovie.addMovie(addFB);
+      $(this).attr('disabled','disabled');
     });
 
     //Wish List
